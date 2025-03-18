@@ -1,6 +1,8 @@
 
 import React from 'react';
 import PageTransition from '@/components/PageTransition';
+import StockTable from '@/components/StockTable';
+import { useStockWebSocket } from '@/hooks/useStockWebSocket';
 
 const products = [
   {
@@ -48,6 +50,9 @@ const products = [
 ];
 
 const Products = () => {
+  // Initialize the WebSocket connection for stock updates
+  useStockWebSocket();
+  
   return (
     <PageTransition>
       <div className="page-container">
@@ -58,7 +63,16 @@ const Products = () => {
           </p>
         </section>
 
-        <section>
+        <section className="page-section">
+          <h2 className="text-2xl font-semibold mb-4">Real-time Stock Market</h2>
+          <p className="text-muted-foreground mb-6">
+            Track live market data with real-time updates. Click column headers to sort.
+          </p>
+          <StockTable />
+        </section>
+
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold mb-6">Featured Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <div 
