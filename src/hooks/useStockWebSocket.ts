@@ -1,10 +1,10 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateStock, setStocks, setError, StockData } from '../store/slices/stockSlice';
 
-// Mock stock data to simulate real-time updates
-const mockStocks: StockData[] = [
+// Mock initial stock data
+const initialMockStocks: StockData[] = [
   // US Stocks
   { symbol: 'AAPL', price: 178.72, change: 0.0, changePercent: 0.0, volume: 23456789, lastUpdated: new Date().toISOString() },
   { symbol: 'MSFT', price: 420.45, change: 0.0, changePercent: 0.0, volume: 15678901, lastUpdated: new Date().toISOString() },
@@ -27,6 +27,7 @@ const mockStocks: StockData[] = [
 export const useStockWebSocket = () => {
   const dispatch = useDispatch();
   const intervalRef = useRef<number | null>(null);
+  const [mockStocks, setMockStocks] = useState<StockData[]>(initialMockStocks);
 
   useEffect(() => {
     // Initialize with mock data
@@ -36,7 +37,7 @@ export const useStockWebSocket = () => {
     intervalRef.current = window.setInterval(() => {
       // Update a random stock with random price changes
       const randomIndex = Math.floor(Math.random() * mockStocks.length);
-      const stock = { ...mockStocks[randomIndex] };
+      const stock = mockStocks[randomIndex];
       
       // Generate random price change (-2% to +2%)
       const changePercent = (Math.random() * 4 - 2) / 100;
@@ -52,7 +53,9 @@ export const useStockWebSocket = () => {
       };
 
       // Update in our mock data array to maintain consistency
-      mockStocks[randomIndex] = updatedStock;
+      const updatedMockStocks = [...mockStocks];
+      updatedMockStocks[randomIndex] = updatedStock;
+      setMockStocks(updatedMockStocks);
       
       // Dispatch to Redux
       dispatch(updateStock(updatedStock));
@@ -64,5 +67,5 @@ export const useStockWebSocket = () => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [dispatch]);
+  }, [dispatch, mockStocks]);
 };
