@@ -5,6 +5,7 @@ import { updateStock, setStocks, setError, StockData } from '../store/slices/sto
 
 // Mock stock data to simulate real-time updates
 const mockStocks: StockData[] = [
+  // US Stocks
   { symbol: 'AAPL', price: 178.72, change: 0.0, changePercent: 0.0, volume: 23456789, lastUpdated: new Date().toISOString() },
   { symbol: 'MSFT', price: 420.45, change: 0.0, changePercent: 0.0, volume: 15678901, lastUpdated: new Date().toISOString() },
   { symbol: 'GOOGL', price: 161.28, change: 0.0, changePercent: 0.0, volume: 8901234, lastUpdated: new Date().toISOString() },
@@ -13,6 +14,14 @@ const mockStocks: StockData[] = [
   { symbol: 'TSLA', price: 248.39, change: 0.0, changePercent: 0.0, volume: 34567890, lastUpdated: new Date().toISOString() },
   { symbol: 'NVDA', price: 877.42, change: 0.0, changePercent: 0.0, volume: 45678901, lastUpdated: new Date().toISOString() },
   { symbol: 'BRK.B', price: 417.57, change: 0.0, changePercent: 0.0, volume: 2345678, lastUpdated: new Date().toISOString() },
+  
+  // Indian Stocks
+  { symbol: 'NSE:RELIANCE', price: 2457.30, change: 0.0, changePercent: 0.0, volume: 5467890, lastUpdated: new Date().toISOString() },
+  { symbol: 'NSE:TCS', price: 3876.25, change: 0.0, changePercent: 0.0, volume: 1234567, lastUpdated: new Date().toISOString() },
+  { symbol: 'NSE:INFY', price: 1568.45, change: 0.0, changePercent: 0.0, volume: 2345678, lastUpdated: new Date().toISOString() },
+  { symbol: 'NSE:HDFCBANK', price: 1725.80, change: 0.0, changePercent: 0.0, volume: 3456789, lastUpdated: new Date().toISOString() },
+  { symbol: 'BSE:TATASTEEL', price: 147.65, change: 0.0, changePercent: 0.0, volume: 7654321, lastUpdated: new Date().toISOString() },
+  { symbol: 'BSE:WIPRO', price: 456.90, change: 0.0, changePercent: 0.0, volume: 1987654, lastUpdated: new Date().toISOString() }
 ];
 
 export const useStockWebSocket = () => {

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { MenuIcon, XIcon, HomeIcon, BoxesIcon, InfoIcon, MailIcon } from 'lucide-react';
+import { MenuIcon, XIcon, HomeIcon, BoxesIcon, InfoIcon, MailIcon, LineChartIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import NavLink from './NavLink';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -57,7 +57,7 @@ const Sidebar = ({ className }: SidebarProps) => {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="p-6 border-b">
-            <h1 className="text-xl font-semibold">Navigo</h1>
+            <h1 className="text-xl font-semibold">StockTracker</h1>
           </div>
 
           {/* Navigation */}
@@ -69,13 +69,13 @@ const Sidebar = ({ className }: SidebarProps) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/products" icon={<BoxesIcon className="h-4 w-4" />}>
-                  Products
+                <NavLink to="/products" icon={<LineChartIcon className="h-4 w-4" />}>
+                  US Stocks
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/about" icon={<InfoIcon className="h-4 w-4" />}>
-                  About
+                  Indian Stocks
                 </NavLink>
               </li>
               <li>
@@ -88,7 +88,7 @@ const Sidebar = ({ className }: SidebarProps) => {
 
           {/* Footer */}
           <div className="p-4 border-t text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Navigo
+            &copy; {new Date().getFullYear()} StockTracker
           </div>
         </div>
       </aside>

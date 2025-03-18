@@ -1,8 +1,13 @@
 
 import React from 'react';
 import PageTransition from '@/components/PageTransition';
+import IndianStockTable from '@/components/IndianStockTable';
+import { useStockWebSocket } from '@/hooks/useStockWebSocket';
 
 const About = () => {
+  // Initialize the WebSocket connection for stock updates
+  useStockWebSocket();
+
   return (
     <PageTransition>
       <div className="page-container">
@@ -13,7 +18,15 @@ const About = () => {
           </p>
         </section>
 
-        <section className="page-section max-w-3xl">
+        <section className="page-section">
+          <h2 className="text-2xl font-semibold mb-4">Indian Stock Market</h2>
+          <p className="text-muted-foreground mb-6">
+            Track live Indian market data with real-time updates. Click column headers to sort.
+          </p>
+          <IndianStockTable />
+        </section>
+
+        <section className="page-section max-w-3xl mt-10">
           <div className="prose prose-slate">
             <p className="text-lg leading-relaxed">
               At Navigo, we believe that design should be both beautiful and functional. Our approach is guided by the principles of simplicity, clarity, and purpose.
